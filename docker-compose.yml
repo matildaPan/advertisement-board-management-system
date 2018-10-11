@@ -27,7 +27,6 @@ services:
     environment:
       SERVICES: gateway
       PORT: 80
-      JWT_SECRET: MDwwDQYJKoZIhvcNAQEBBQADKwAwKAIhAIkg74q7InOKOw/7t8EmmE9YV3+G/gsQnJXPgZMidxFjAgMBAAE=
     entrypoint: forever
     command: --plain --minUptime 1000 --spinSleepTime 4000 --watchDirectory /home/app/src -w src/main.js
     volumes:
