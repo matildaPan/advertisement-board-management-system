@@ -33,6 +33,7 @@ services:
       - ./services/gateway.service/src:/home/app/src
     depends_on:
       - rabbit
+      - auth
     labels:
       - "traefik.enable=true"   
       - "traefik.backend=gateway"

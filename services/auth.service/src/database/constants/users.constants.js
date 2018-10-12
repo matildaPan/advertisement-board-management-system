@@ -3,7 +3,7 @@ const admin = {
 	name: "Admin",
 	role: "Admin",
 	username: "admin@email.com",
-	password: "8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918"
+	password: "$2b$10$ZVhYXTA.W3qNn27wlnoZdOZzUTpgfzx3bqgQhyfnbzOxzJEE9Z52a"
 };
 
 const guest = {
@@ -11,7 +11,7 @@ const guest = {
 	name: "Guest",
 	role: "Guest",
 	username: "guest@email.com",
-	password: "84983C60F7DAADC1CB8698621F802C0D9F9A3C3C295C810748FB048115C186EC",
+	password: "$2b$10$Pe70z1navuHSRg.EQQUhYuYysjVA5YmV04ZnDkzezVXbZWF.crwLa",
 };
 
 module.exports = {
