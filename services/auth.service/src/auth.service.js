@@ -14,7 +14,7 @@ const handler = (func) => {
 			console.log(error);
 		}
 		if(result.data == null){
-			throw new MoleculerClientError(result.message, 404, null, {params: ctx.params});
+			throw new MoleculerClientError(result.message, result.status, null, {params: ctx.params});
 		}
 		return result.data;
 	};

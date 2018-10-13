@@ -24,11 +24,12 @@ export const loginFailure =(message)=>{
 }
 
 export const loginRequest =(username, password)=>{
-  console.log({username, password}, '&&&&&');
   const data = {username, password};
   return (dispatch)=>{
-    post(loginUrl, data, false).then(
-      (result) => {
+    post(loginUrl, data).then(
+        response => response.json()
+    ).then(
+      (result)=>{
         localStorage.setItem("auth", JSON.stringify(result));
         dispatch(loginSuccess(result))
       }

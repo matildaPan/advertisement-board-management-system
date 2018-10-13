@@ -9,8 +9,15 @@ module.exports = {
 	name: "gateway",
 	mixins: [ApiGateway],
 	settings: {
-		port: process.env.PORT || 3000,
-
+    port: process.env.PORT || 3000,
+    cors: {
+      origin: "*",
+      methods: ["GET", "OPTIONS", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["*"],
+      exposedHeaders: ["*"],
+      credentials: true,
+      maxAge: 3600
+    },
 		routes: [{
 			path: "/api",
 			authorization: false,
@@ -19,11 +26,6 @@ module.exports = {
 			],
 			aliases: { 
 				"POST login": "auth.login",
-			},
-			
-			cors: {
-				origin: ["http://localhost:80"],
-				methods: ["*"]
 			},
 			
 		}]
