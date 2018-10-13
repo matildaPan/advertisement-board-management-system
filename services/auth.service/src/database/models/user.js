@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const Account = sequelize.define("User", {
+	const User = sequelize.define("User", {
 		id: {
 			type: DataTypes.UUID,
 			primaryKey: true,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 			field: "deleted_at"
 		}
 	});
-	Account.associate = function() {
+	User.associate = function() {
 	};
-	return Account;
+	return User;
 };

@@ -16,7 +16,7 @@ const login = async (ctx) => {
   if (!comparedPassword) {
     return { message: 'Authentication failed. Incorrect password.', status: 401 };
   } else {
-    const token = jwt.sign(ctx.params, process.env.JWT_SECRET, { expiresIn: '24h' })
+    const token = jwt.sign({username, userId: user.id}, process.env.JWT_SECRET, { expiresIn: '24h' })
     return {
       data: {
         success: true,

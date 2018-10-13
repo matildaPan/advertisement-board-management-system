@@ -20,7 +20,7 @@ module.exports = {
     },
 		routes: [{
 			path: "/api",
-			authorization: false,
+			authorization: true,
 			whitelist: [
 				"*"
 			],
@@ -32,21 +32,26 @@ module.exports = {
 	}, 
 	methods: {
 		authorize(ctx, route, req){
-			let auth = req.headers["authorization"];
-			if (auth && auth.startsWith("Bearer")) {
-				let token = auth.slice(7);
-				return jwt.verify(token, process.env.JWT_SECRET, (err, decoded)=>{
-					if(err){
-						return Promise.reject(new Errors.UnAuthorizedError(Errors.ERR_INVALID_TOKEN));
-					}else{
-						const {product, environment, account_id} = decoded;
-						ctx.meta.reqTokenData = {productName: product, environmentName: environment, accountId: account_id	};
-						return Promise.resolve(ctx);
-					}
-				});
-			} else {
-				return Promise.reject(new Errors.UnAuthorizedError(Errors.ERR_NO_TOKEN));
-			}
+      const apiUrl = req.url;
+      if(apiUrl === '/api/login'){
+        return Promise.resolve(ctx);
+      }else{
+        let auth = req.headers["authorization"];
+        if (auth && auth.startsWith("Bearer")) {
+          let token = auth.slice(7);
+          return jwt.verify(token, process.env.JWT_SECRET, (err, decoded)=>{
+            if(err){
+              return Promise.reject(new Errors.UnAuthorizedError(Errors.ERR_INVALID_TOKEN));
+            }else{
+              const {username, userId} = decoded;
+              ctx.meta.reqTokenData = {username, userId};
+              return Promise.resolve(ctx);
+            }
+          });
+        } else {
+          return Promise.reject(new Errors.UnAuthorizedError(Errors.ERR_NO_TOKEN));
+        }
+      }
 		}
 	}
 
