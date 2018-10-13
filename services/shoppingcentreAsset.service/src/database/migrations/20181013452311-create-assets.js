@@ -2,7 +2,7 @@
 
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable("Users", {
+		return queryInterface.createTable("Asset", {
 			id: {
 				allowNull: false,
 				primaryKey: true,
@@ -11,15 +11,26 @@ module.exports = {
 			name: {
 				type: Sequelize.STRING
 			},
-			role: {
+			width: {
+				type: Sequelize.INTEGER
+      },
+      height: {
+				type: Sequelize.INTEGER
+      },
+      location: {
 				type: Sequelize.STRING
-			},
-			username: {
-				type: Sequelize.STRING
-			},
-			password: {
-				type: Sequelize.STRING
-			},
+      },
+      active:{
+        type: Sequelize.BOOLEAN
+      },
+      shopping_centre_id: {
+        allowNull: false,
+        type: Sequelize.UUID,
+        references: {
+          model: "ShoppingCentre",
+          key: "id"
+        }
+      },
 			created_at: {
 				type: Sequelize.DATE,
 				allowNull: false
@@ -35,6 +46,6 @@ module.exports = {
 		});
 	},
 	down: (queryInterface) => {
-		return queryInterface.dropTable("Users");
+		return queryInterface.dropTable("Asset");
 	}
 };

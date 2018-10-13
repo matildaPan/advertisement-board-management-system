@@ -60,6 +60,23 @@ services:
       - mysql
       - rabbit
 
+  shopping-centre-asset:
+    build:
+      context: ./services/shoppingCentreAsset.service
+    image: shopping-centre-asset
+    env_file: docker-compose.env
+    environment:
+      SERVICES: shopping-centre-asset
+      PORT: 80
+      MYSQL_DATABASE: "shoppingCentreAsset"
+    entrypoint: forever
+    command: --plain --minUptime 1000 --spinSleepTime 4000 --watchDirectory /home/app/src -w src/main.js
+    volumes:
+      - ./services/shoppingCentreAsset.service/src:/home/app/src
+    depends_on:
+      - mysql
+      - rabbit
+
   traefik:
     image: traefik
     command: --web --docker --docker.domain=docker.localhost --logLevel=INFO --docker.exposedbydefault=false
