@@ -1,16 +1,29 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import {loginRequest, updateUsernameInput, updatePasswordInput} from './actions/login.actions';
 import Login from './components/login.component';
+import { loginStateSelector } from './reducers/login.reducer';
+import { debounce } from 'lodash';
 
-class LoginContainer extends React.Component{
-  constructor(props){
-    super(props);
-    this.submitLogin = this.submitLogin.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+export class LoginContainer extends React.Component{
+
+  submitLogin = () =>{
+    this.props.loginRequest(this.props.login.userCredential.username, this.props.login.userCredential.password, this.props.history);
+  }
+
+  updateUsernameInputDebounce = debounce((value) => 
+    this.props.updateUsernameInput(value), 300, { leading: true, trailing: true });
+  
+  updatePasswordInputDebounce = debounce((value) => 
+    this.props.updatePasswordInput(value), 300, { leading: true, trailing: true });
+
+  handleUsernameChange = (event) => {
+    this.updateUsernameInputDebounce(event.target.value);
+  }
+
+  handlePasswordChange = (event) => {
+    this.updatePasswordInputDebounce(event.target.value);
   }
 
   render(){
@@ -22,24 +35,14 @@ class LoginContainer extends React.Component{
       />
   }
 
-  submitLogin (){
-    this.props.loginRequest(this.props.login.userCredential.username, this.props.login.userCredential.password);
-  }
-
-  handleUsernameChange(event){
-    this.props.updateUsernameInput(event.target.value);
-  }
-
-  handlePasswordChange(event){
-    this.props.updatePasswordInput(event.target.value)
-  }
+  
 
   
 }
 
 const mapStateToProps = (state) => {
   return{
-    login: state.login
+    login: loginStateSelector(state)
   }
 }
 
@@ -48,7 +51,6 @@ const mapDispatchProps = (dispatch) => {
     loginRequest: bindActionCreators(loginRequest, dispatch),
     updateUsernameInput: bindActionCreators(updateUsernameInput, dispatch),
     updatePasswordInput: bindActionCreators(updatePasswordInput, dispatch)
-    
   }
 }
 

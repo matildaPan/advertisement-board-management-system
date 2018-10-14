@@ -23,7 +23,8 @@ const Login = ({
   handlePasswordChange
 })=>{
   return(
-    <form>
+    <div>
+          <form>
         <TextField
           id="username"
           placeholder="username"
@@ -42,6 +43,11 @@ const Login = ({
           Login
         </Button>
     </form>
+    <div>
+      <span>{login.message}</span>
+    </div>
+    </div>
+
   );
 }
 

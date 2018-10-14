@@ -1,10 +1,11 @@
 import {actionTypes} from '../actions/login.actions';
+import {createSelector} from 'reselect';
 
 export const initLoginState = {
-  login: false,
+  isAuthenticated: false,
   loading: false,
   auth: {},
-  message: {},
+  message: '',
   userCredential: {
     username: '',
     password: ''
@@ -18,7 +19,7 @@ export const loginReducer = (state=initLoginState, action)=>{
         {}, 
         state, 
         {
-          login: true,
+          isAuthenticated: true,
           loading: false,
           auth: action.auth
         }
@@ -29,7 +30,7 @@ export const loginReducer = (state=initLoginState, action)=>{
         {},
         state,
         {
-          login: false,
+          isAuthenticated: false,
           loading: false,
           auth: {},
           message: action.message
@@ -76,3 +77,9 @@ export const loginReducer = (state=initLoginState, action)=>{
   }
 }
 
+export const loginStateSelector = state => state.login;
+
+export const isAuthenticatedSelector = createSelector(
+  loginStateSelector,
+  loginState => loginState.isAuthenticated
+)

@@ -23,15 +23,20 @@ export const loginFailure =(message)=>{
   }
 }
 
-export const loginRequest =(username, password)=>{
+export const loginRequest =(username, password, history)=>{
   const data = {username, password};
   return (dispatch)=>{
     post(loginUrl, data).then(
         response => response.json()
     ).then(
       (result)=>{
-        localStorage.setItem("auth", JSON.stringify(result));
-        dispatch(loginSuccess(result))
+        if(result.success){
+          localStorage.setItem("auth", JSON.stringify(result));
+          dispatch(loginSuccess(result));
+          history.push('/');
+        }else{
+          dispatch(loginFailure(result.message))
+        }
       }
     ).catch(
       message => dispatch(loginFailure(message))

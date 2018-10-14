@@ -1,5 +1,4 @@
 import { createStore, combineReducers, applyMiddleware} from 'redux';
-import createHistory from 'history/createBrowserHistory'
 import {initLoginState, loginReducer} from './login/reducers/login.reducer';
 import reduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -15,9 +14,6 @@ const initialState = {
 const composeEnhancers = composeWithDevTools({
     // options like actionSanitizer, stateSanitizer
 });
-
-export const history = createHistory();
-
 
 export const initStore = (state = initialState) => {
     return createStore(
