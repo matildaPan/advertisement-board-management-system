@@ -26,7 +26,8 @@ module.exports = {
 			],
 			aliases: { 
 				"POST login": "auth.login",
-        "GET shoppingCentreList": "shoppingcentreasset.shoppingCentreList"
+        "GET shoppingCentres": "shoppingcentreasset.shoppingCentreList",
+        "POST shoppingCentres": "shoppingcentreasset.createShoppingCentre"
 			},
 			
 		}]

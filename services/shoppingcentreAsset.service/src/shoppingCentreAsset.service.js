@@ -27,7 +27,8 @@ module.exports = {
 	metadata: {},
 
 	actions: {
-		shoppingCentreList: handler(actions.getShoppingCentreList)
+    shoppingCentreList: handler(actions.getShoppingCentreList),
+    createShoppingCentre: handler(actions.createShoppingCentre)
 	},
 
 	events: {
