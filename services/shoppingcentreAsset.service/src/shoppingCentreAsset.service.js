@@ -28,7 +28,8 @@ module.exports = {
 
 	actions: {
     shoppingCentreList: handler(actions.getShoppingCentreList),
-    createShoppingCentre: handler(actions.createShoppingCentre)
+    createShoppingCentre: handler(actions.createShoppingCentre),
+    getShoppingCentreById: handler(actions.getShoppingCentreById)
 	},
 
 	events: {
