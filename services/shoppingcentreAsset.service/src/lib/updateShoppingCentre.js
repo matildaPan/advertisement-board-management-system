@@ -7,7 +7,18 @@ const updateShoppingCentre = async (ctx) => {
   }else{
     const combinedParams = Object.assign({}, ctx.params, {updatedAt: new Date()});
     try {
-      const result = await ShoppingCentre.update(combinedParams, {where: {id: ctx.params.id}});
+      await ShoppingCentre.update(combinedParams, {where: {id: ctx.params.id}});
+      const result = await ShoppingCentre.findOne({where: {id: ctx.params.id}});
+      const log = {
+        entity: 'shoppingCentre',
+        event: 'update',
+        entityId: result.id,
+        userId: ctx.meta.reqTokenData.userId,
+        eventTimestamp: new Date(),
+        newData: result,
+        previousData: data
+      };
+      ctx.call('auditlog.eventLogger', log);
       return{data: result};
     } catch (error) {
       console.error(error);

@@ -7,7 +7,18 @@ const updateAsset = async (ctx) => {
   }else{
     const combinedParams = Object.assign({}, ctx.params, {updatedAt: new Date()});
     try {
-      const result = Asset.update(combinedParams, {where: {id: ctx.params.id}});
+      await Asset.update(combinedParams, {where: {id: ctx.params.id}});
+      const result = await Asset.findOne({where: {id: ctx.params.id}});
+      const log = {
+        entity: 'asset',
+        event: 'update',
+        entityId: result.id,
+        userId: ctx.meta.reqTokenData.userId,
+        eventTimestamp: new Date(),
+        newData: result,
+        previousData: data
+      };
+      ctx.call('auditlog.eventLogger', log);
       return{data: result}; 
     } catch (error) {
       console.error(error);

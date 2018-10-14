@@ -5,6 +5,16 @@ const createAsset = async (ctx) => {
   const combinedParams = Object.assign({}, ctx.params, {id: uuid(), createdAt: new Date(), updatedAt: new Date()} );
   try {    
     const data = await Asset.create(combinedParams);
+    const log = {
+      entity: 'asset',
+      event: 'create',
+      entityId: data.id,
+      userId: ctx.meta.reqTokenData.userId,
+      eventTimestamp: new Date(),
+      newData:data,
+      previousData: {}
+    };
+    ctx.call('auditlog.eventLogger', log);
     return {data};
   } catch (error) {
     console.error(error);

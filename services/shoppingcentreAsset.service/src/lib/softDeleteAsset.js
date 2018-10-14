@@ -6,7 +6,18 @@ const softDeleteAsset = async (ctx) => {
     return {message: 'Asset is not found', status: 404};
   }else{
     try {
-      const result = Asset.update({deletedAt: new Date()}, {where: {id: ctx.params.id}});
+      await Asset.update({deletedAt: new Date()}, {where: {id: ctx.params.id}});
+      const result = await Asset.findOne({where: {id: ctx.params.id}});
+      const log = {
+        entity: 'asset',
+        event: 'softdelete',
+        entityId: result.id,
+        userId: ctx.meta.reqTokenData.userId,
+        eventTimestamp: new Date(),
+        newData: result,
+        previousData: data
+      };
+      ctx.call('auditlog.eventLogger', log);
       return{data: result}; 
     } catch (error) {
       console.error(error);

@@ -1,0 +1,23 @@
+{
+  "name": "auditlog.service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "node --inspect=0.0.0.0:9229 src/main.js",
+    "start": "node src/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "jest": "^22.4.2",
+    "jest-cli": "^22.4.2"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "elasticsearch": "^15.1.1",
+    "moleculer": "^0.12.0"
+  }
+}

@@ -16,6 +16,7 @@ const login = async (ctx) => {
     return { message: 'Authentication failed. Incorrect password.', status: 401 };
   } else {
     const token = jwt.sign({username, userId: user.id}, process.env.JWT_SECRET, { expiresIn: '24h' });
+    ctx.call('auditlog.eventLogger', {username, userId: user.id, event:'login'});
     return {
       data: {
         success: true,

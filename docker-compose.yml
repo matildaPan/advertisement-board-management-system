@@ -3,8 +3,6 @@ version: "3.0"
 services:
 
   mysql:
-    labels:
-      - "traefik.enable=false"
     image: mysql:5.7.22
     environment:
       MYSQL_ROOT_PASSWORD: "root"
@@ -18,6 +16,24 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+    
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.2
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
 
   gateway:
     build:
@@ -54,6 +70,7 @@ services:
     depends_on:
       - mysql
       - rabbit
+      - auditlog
 
   shoppingcentreasset:
     build:
@@ -71,4 +88,20 @@ services:
     depends_on:
       - mysql
       - rabbit
+      - auditlog
 
+  auditlog:
+    build: 
+      context: ./services/auditLog.service
+    image: auditlog
+    env_file: docker-compose.env
+    environment:
+      SERVICES: auditlog
+      PORT: 80
+    entrypoint: forever
+    command: --plain --minUptime 1000 --spinSleepTime 4000 --watchDirectory /home/app/src -w src/main.js
+    volumes:
+      - ./services/auditLog.service/src:/home/app/src
+    depends_on:
+      - elasticsearch
+      - rabbit
