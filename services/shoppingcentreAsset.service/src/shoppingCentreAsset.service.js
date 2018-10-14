@@ -31,7 +31,12 @@ module.exports = {
     createShoppingCentre: handler(actions.createShoppingCentre),
     getShoppingCentreById: handler(actions.getShoppingCentreById),
     updateShoppingCentre: handler(actions.updateShoppingCentre),
-    softDeleteShoppingCentre: handler(actions.softDeleteShoppingCentre)
+    softDeleteShoppingCentre: handler(actions.softDeleteShoppingCentre),
+    getAssetList: handler(actions.getAssetList),
+    createAsset: handler(actions.createAsset),
+    updateAsset: handler(actions.updateAsset),
+    getAssetById: handler(actions.getAssetById),
+    softDeleteAsset: handler(actions.softDeleteAsset)
 	},
 
 	events: {

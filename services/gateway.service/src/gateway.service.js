@@ -31,6 +31,11 @@ module.exports = {
         "GET shoppingCentre/:id": "shoppingcentreasset.getShoppingCentreById",
         "PUT shoppingCentre/:id": "shoppingcentreasset.updateShoppingCentre",
         "DELETE shoppingCentre/:id": "shoppingcentreasset.softDeleteShoppingCentre",
+        "GET assets": "shoppingcentreasset.getAssetList",
+        "POST assets": "shoppingcentreasset.createAsset",
+        "PUT asset/:id": "shoppingcentreasset.updateAsset",
+        "GET asset/:id": "shoppingcentreasset.getAssetById",
+        "DELETE asset/:id": "shoppingcentreasset.softDeleteAsset"
 			},
 			
 		}]
