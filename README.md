@@ -1,8 +1,5 @@
 # shopping center advertisement board management system 
 
-In order to demostrate my understanding of microservice and also mitigate the configration, I choose to adapt to [Moleculer](https://moleculer.services)
-# shopping center advertisement board management system 
-
 In order to demostrate my understanding of microservice , and consider time limitation, also mitigate the configration, I choose to adapt to [Moleculer](https://moleculer.services)
 
 ### The architecture of this application is shown below 
@@ -17,18 +14,25 @@ In order to demostrate my understanding of microservice , and consider time limi
 To start backend service: 
 - step 1: Build images
 This may take a while for first time building docker images
+
 ``` sh
 $ docker-compose build
 ```
 - step 2: start docker containers
 ``` sh
-$ docker-compose up -d
+$ docker-compose up 
 ```
-to view logs
+To view logs
 ```sh
 $ docker-compose logs -f
 ```
+To tear down containers
+```sh
+$ docker-compose down
+```
+
 After services are up and running, the following API endpoints are avaiable: 
+
 | API | Method | Require authorization header | Description |
 | ------ | ------ |  ------ |  ------ | 
 | localhost:4800/api/login |POST | FALSE | login to obtain JWT token |
@@ -53,6 +57,9 @@ Seeded User:
 
 #### Full API documentation can be found at [here](https://documenter.getpostman.com/view/864080/RWgrxdNV)
 #### For easily trying the API, A Postman file [postman-collection.json](postman-collection.json) is also included in the repo as well
+
+### Kibana
+Please view and query event audit log on Kibana [localhost:5601](http://localhost:5601)
 
 ### Frontend
 Beacause of Time constraints, it has only login, just to demonstrate my ability of using react and redux. 
