@@ -1,7 +1,6 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../database/models').User;
-const saltRounds = 10;
 
 const login = async (ctx) => {
   const username = ctx.params.username;
@@ -16,7 +15,7 @@ const login = async (ctx) => {
   if (!comparedPassword) {
     return { message: 'Authentication failed. Incorrect password.', status: 401 };
   } else {
-    const token = jwt.sign({username, userId: user.id}, process.env.JWT_SECRET, { expiresIn: '24h' })
+    const token = jwt.sign({username, userId: user.id}, process.env.JWT_SECRET, { expiresIn: '24h' });
     return {
       data: {
         success: true,

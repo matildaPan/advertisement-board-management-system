@@ -1,4 +1,4 @@
-const Asset = require("../database/models").Asset;
+const Asset = require('../database/models').Asset;
 
 const getAssetById = async (ctx) => {
   const data = await Asset.findOne({where: {id: ctx.params.id, deletedAt: null}});
@@ -7,6 +7,6 @@ const getAssetById = async (ctx) => {
   }else{
     return {data};
   }
-}
+};
 
 module.exports = getAssetById;

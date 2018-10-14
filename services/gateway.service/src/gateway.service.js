@@ -1,53 +1,53 @@
-"use strict";
+'use strict';
 
-const jwt = require("jsonwebtoken");
-const ApiGateway = require("moleculer-web");
-const Errors = require("moleculer-web").Errors;
+const jwt = require('jsonwebtoken');
+const ApiGateway = require('moleculer-web');
+const Errors = require('moleculer-web').Errors;
 
 
 module.exports = {
-	name: "gateway",
-	mixins: [ApiGateway],
-	settings: {
+  name: 'gateway',
+  mixins: [ApiGateway],
+  settings: {
     port: process.env.PORT || 3000,
     cors: {
-      origin: "*",
-      methods: ["GET", "OPTIONS", "POST", "PUT", "DELETE"],
-      allowedHeaders: ["*"],
-      exposedHeaders: ["*"],
+      origin: '*',
+      methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
+      allowedHeaders: ['*'],
+      exposedHeaders: ['*'],
       credentials: true,
       maxAge: 3600
     },
-		routes: [{
-			path: "/api",
-			authorization: true,
-			whitelist: [
-				"*"
-			],
-			aliases: { 
-				"POST login": "auth.login",
-        "GET shoppingCentres": "shoppingcentreasset.shoppingCentreList",
-        "POST shoppingCentres": "shoppingcentreasset.createShoppingCentre",
-        "GET shoppingCentre/:id": "shoppingcentreasset.getShoppingCentreById",
-        "PUT shoppingCentre/:id": "shoppingcentreasset.updateShoppingCentre",
-        "DELETE shoppingCentre/:id": "shoppingcentreasset.softDeleteShoppingCentre",
-        "GET assets": "shoppingcentreasset.getAssetList",
-        "POST assets": "shoppingcentreasset.createAsset",
-        "PUT asset/:id": "shoppingcentreasset.updateAsset",
-        "GET asset/:id": "shoppingcentreasset.getAssetById",
-        "DELETE asset/:id": "shoppingcentreasset.softDeleteAsset"
-			},
+    routes: [{
+      path: '/api',
+      authorization: true,
+      whitelist: [
+        '*'
+      ],
+      aliases: { 
+        'POST login': 'auth.login',
+        'GET shoppingCentres': 'shoppingcentreasset.shoppingCentreList',
+        'POST shoppingCentres': 'shoppingcentreasset.createShoppingCentre',
+        'GET shoppingCentre/:id': 'shoppingcentreasset.getShoppingCentreById',
+        'PUT shoppingCentre/:id': 'shoppingcentreasset.updateShoppingCentre',
+        'DELETE shoppingCentre/:id': 'shoppingcentreasset.softDeleteShoppingCentre',
+        'GET assets': 'shoppingcentreasset.getAssetList',
+        'POST assets': 'shoppingcentreasset.createAsset',
+        'PUT asset/:id': 'shoppingcentreasset.updateAsset',
+        'GET asset/:id': 'shoppingcentreasset.getAssetById',
+        'DELETE asset/:id': 'shoppingcentreasset.softDeleteAsset'
+      },
 			
-		}]
-	}, 
-	methods: {
-		authorize(ctx, route, req){
+    }]
+  }, 
+  methods: {
+    authorize(ctx, route, req){
       const apiUrl = req.url;
       if(apiUrl === '/api/login'){
         return Promise.resolve(ctx);
       }else{
-        let auth = req.headers["authorization"];
-        if (auth && auth.startsWith("Bearer")) {
+        let auth = req.headers['authorization'];
+        if (auth && auth.startsWith('Bearer')) {
           let token = auth.slice(7);
           return jwt.verify(token, process.env.JWT_SECRET, (err, decoded)=>{
             if(err){
@@ -62,8 +62,8 @@ module.exports = {
           return Promise.reject(new Errors.UnAuthorizedError(Errors.ERR_NO_TOKEN));
         }
       }
-		}
-	}
+    }
+  }
 
 	
 };

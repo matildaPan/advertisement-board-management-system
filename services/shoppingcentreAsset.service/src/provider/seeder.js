@@ -1,1 +1,1 @@
-module.exports = require("./common")("../database/seeders");
+module.exports = require('./common')('../database/seeders');

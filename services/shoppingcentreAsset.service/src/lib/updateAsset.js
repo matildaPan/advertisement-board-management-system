@@ -1,4 +1,4 @@
-const Asset = require("../database/models").Asset;
+const Asset = require('../database/models').Asset;
 
 const updateAsset = async (ctx) => {
   const data = await Asset.findOne({where: {id: ctx.params.id}});
@@ -10,9 +10,10 @@ const updateAsset = async (ctx) => {
       const result = Asset.update(combinedParams, {where: {id: ctx.params.id}});
       return{data: result}; 
     } catch (error) {
-      return {message: "unable to update asset", status: 500}
+      console.error(error);
+      return {message: 'unable to update asset', status: 500};
     }
   }
-}
+};
 
 module.exports = updateAsset;

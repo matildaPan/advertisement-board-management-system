@@ -1,5 +1,6 @@
 module.exports = {
     "root": true,
+    
     "env": {
         "node": true,
         "commonjs": true,
@@ -10,17 +11,25 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaVersion": 8,
+        "ecmaFeatures": {
+          "modules":true,
+          "arrowFunctions":true,
+          "classes":true,
+          "jsx": true,
+          "experimentalObjectRestSpread": true
+        },
     },
     "rules": {
         "indent": [
             "warn",
-            "tab",
+            2,
             { "SwitchCase": 1 }
         ],
         "quotes": [
             "warn",
-            "double"
+            "single"
         ],
         "semi": [
             "error",

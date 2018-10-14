@@ -1,1 +1,1 @@
-module.exports = require("./common")("../database/migrations");
+module.exports = require('./common')('../database/migrations');

@@ -1,56 +1,56 @@
-"use strict";
+'use strict';
 
-const umzugMigration = require("./provider/migration");
-const umzugSeeder = require("./provider/seeder");
-const { MoleculerClientError } = require("moleculer").Errors;
-const actions = require("./lib");
+const umzugMigration = require('./provider/migration');
+const umzugSeeder = require('./provider/seeder');
+const { MoleculerClientError } = require('moleculer').Errors;
+const actions = require('./lib');
 
 const handler = (func) => {
-	return async (ctx) =>{
-		let result;
-		try {
-			result = await func(ctx);
-		} catch (error) {
-			console.log(error);
-		}
-		if(result.data == null){
-			throw new MoleculerClientError(result.message, result.status, null, {params: ctx.params});
-		}
-		return result.data;
-	};
+  return async (ctx) =>{
+    let result;
+    try {
+      result = await func(ctx);
+    } catch (error) {
+      console.log(error);
+    }
+    if(result.data == null){
+      throw new MoleculerClientError(result.message, result.status, null, {params: ctx.params});
+    }
+    return result.data;
+  };
 		
 };
 
 module.exports = {
-	name: "auth",
-	settings: {},
-	metadata: {},
+  name: 'auth',
+  settings: {},
+  metadata: {},
 
-	actions: {
-		login: handler(actions.login),
-	},
+  actions: {
+    login: handler(actions.login),
+  },
 
-	events: {
+  events: {
 
-	},
+  },
 
-	created() {
-    console.log('AUTH CREATED !!!!')
-		umzugMigration.up();
-		let broker = this.broker;
-		setInterval(() => {
-			if (!broker.transit.tx.connected) {
-				console.error("Lost connection to TRANSPORTER, killing process...");
-				broker.stop();
-				process.exit(0);
-			}
-		}, 10000);
+  created() {
+    console.log('AUTH CREATED !!!!');
+    umzugMigration.up();
+    let broker = this.broker;
+    setInterval(() => {
+      if (!broker.transit.tx.connected) {
+        console.error('Lost connection to TRANSPORTER, killing process...');
+        broker.stop();
+        process.exit(0);
+      }
+    }, 10000);
 
-	},
-	started() {
-		umzugSeeder.up();
-	},
-	stopped(broker) {
-	},
+  },
+  started() {
+    umzugSeeder.up();
+  },
+  stopped(broker) {
+  },
 
 };
