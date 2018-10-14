@@ -1,7 +1,18 @@
 const Asset = require('../database/models').Asset;
 
 const assetList = async (ctx) => {
-  const data = Asset.findAll({where: {deletedAt: null}});
+  let filter = { 
+    where: {
+      deletedAt: null
+    } 
+  };
+
+  if(ctx.params.shoppingCentrId) {
+    filter.where.shoppingCentreId = ctx.params.shoppingCentrId;
+  }
+  
+  let data = await Asset.findAll(filter);
+  
   return {data};
 };
 
