@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 			field: "deleted_at"
 		}
 	});
-	Asset.associate = function() {
+	Asset.associate = function(models) {
     Asset.belongsTo(models.ShoppingCentre, {foreignKey: "shopping_centre_id", targetKey: "id"});
 	};
 	return Asset;

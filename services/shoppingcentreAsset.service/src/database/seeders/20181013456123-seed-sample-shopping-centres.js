@@ -6,7 +6,7 @@ module.exports = {
     const shoppingCentre1 = shoppingCentres.shoppingCentre1;
     const shoppingCentre2 = shoppingCentres.shoppingCentre2;
     const shoppingCentre3 = shoppingCentres.shoppingCentre3;
-		return queryInterface.bulkInsert("ShoppingCentre", [{
+		return queryInterface.bulkInsert("ShoppingCentres", [{
 			...shoppingCentre1,
 			created_at: new Date(),
 			updated_at: new Date()

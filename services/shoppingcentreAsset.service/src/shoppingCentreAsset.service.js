@@ -3,7 +3,7 @@
 const umzugMigration = require("./provider/migration");
 const umzugSeeder = require("./provider/seeder");
 const { MoleculerClientError } = require("moleculer").Errors;
-// const actions = require("./lib");
+const actions = require("./lib");
 
 const handler = (func) => {
 	return async (ctx) =>{
@@ -22,12 +22,12 @@ const handler = (func) => {
 };
 
 module.exports = {
-	name: "shoppingCentreAsset",
+	name: "shoppingcentreasset",
 	settings: {},
 	metadata: {},
 
 	actions: {
-		// login: handler(actions.login),
+		shoppingCentreList: handler(actions.getShoppingCentreList)
 	},
 
 	events: {

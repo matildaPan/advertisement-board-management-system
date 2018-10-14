@@ -1,9 +1,8 @@
 "use strict";
 
 let Sequelize = require("sequelize");
-let Environment = require("./environment");
-let Product = require("./product");
-let ProductEnvironment = require("./productenvironment");
+let ShoppingCentre = require("./shoppingCentre");
+let Asset = require("./asset");
 
 let db = {};
 
@@ -15,9 +14,8 @@ const sequelize = new Sequelize(
 	+":"+process.env.MYSQL_PORT
 	+"/"+process.env.MYSQL_DATABASE);
   
-db.Environment = Environment(sequelize, Sequelize);
-db.Product = Product(sequelize, Sequelize);
-db.ProductEnvironment = ProductEnvironment(sequelize, Sequelize);
+db.ShoppingCentre = ShoppingCentre(sequelize, Sequelize);
+db.Asset = Asset(sequelize, Sequelize);
 
 Object.keys(db).forEach(function(modelName) {
 	if (db[modelName].associate) {		

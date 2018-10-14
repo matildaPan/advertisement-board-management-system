@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 			field: "deleted_at"
 		}
 	});
-	ShoppingCentre.associate = function() {
+	ShoppingCentre.associate = function(models) {
     ShoppingCentre.hasMany(models.Asset, {foreignKey: "shopping_centre_id", sourceKey: "id"});
 	};
 	return ShoppingCentre;

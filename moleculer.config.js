@@ -2,7 +2,6 @@
 
 // More info about options: https://moleculer.services/docs/0.13/broker.html#Broker-options
 module.exports = {
-	// namespace: "",
 	nodeID: null,
 
 	logger: true,

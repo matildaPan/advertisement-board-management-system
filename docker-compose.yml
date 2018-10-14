@@ -34,12 +34,7 @@ services:
     depends_on:
       - rabbit
       - auth
-    labels:
-      - "traefik.enable=true"   
-      - "traefik.backend=gateway"
-      - "traefik.port=3001"
-      - "traefik.frontend.entryPoints=http"
-      - "traefik.frontend.rule=PathPrefix:/"
+      - shoppingcentreasset
     ports:
       - "4800:80"
 
@@ -60,13 +55,13 @@ services:
       - mysql
       - rabbit
 
-  shopping-centre-asset:
+  shoppingcentreasset:
     build:
       context: ./services/shoppingCentreAsset.service
-    image: shopping-centre-asset
+    image: shoppingcentreasset
     env_file: docker-compose.env
     environment:
-      SERVICES: shopping-centre-asset
+      SERVICES: shoppingcentreasset
       PORT: 80
       MYSQL_DATABASE: "shoppingCentreAsset"
     entrypoint: forever
@@ -77,12 +72,3 @@ services:
       - mysql
       - rabbit
 
-  traefik:
-    image: traefik
-    command: --web --docker --docker.domain=docker.localhost --logLevel=INFO --docker.exposedbydefault=false
-    ports:
-      - "3000:80"
-      - "3001:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /dev/null:/traefik.toml

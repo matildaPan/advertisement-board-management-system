@@ -8,7 +8,7 @@ module.exports = {
     const asset3 = assets.asset3;
     const asset4 = assets.asset4;
 
-		return queryInterface.bulkInsert("Asset", [{
+		return queryInterface.bulkInsert("Assets", [{
 			...asset1,
 			created_at: new Date(),
 			updated_at: new Date()
