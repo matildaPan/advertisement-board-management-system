@@ -29,7 +29,9 @@ module.exports = {
 	actions: {
     shoppingCentreList: handler(actions.getShoppingCentreList),
     createShoppingCentre: handler(actions.createShoppingCentre),
-    getShoppingCentreById: handler(actions.getShoppingCentreById)
+    getShoppingCentreById: handler(actions.getShoppingCentreById),
+    updateShoppingCentre: handler(actions.updateShoppingCentre),
+    softDeleteShoppingCentre: handler(actions.softDeleteShoppingCentre)
 	},
 
 	events: {

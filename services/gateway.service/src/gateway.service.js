@@ -28,7 +28,9 @@ module.exports = {
 				"POST login": "auth.login",
         "GET shoppingCentres": "shoppingcentreasset.shoppingCentreList",
         "POST shoppingCentres": "shoppingcentreasset.createShoppingCentre",
-        "GET shoppingCentres/:id": "shoppingcentreasset.getShoppingCentreById"
+        "GET shoppingCentre/:id": "shoppingcentreasset.getShoppingCentreById",
+        "PUT shoppingCentre/:id": "shoppingcentreasset.updateShoppingCentre",
+        "DELETE shoppingCentre/:id": "shoppingcentreasset.softDeleteShoppingCentre",
 			},
 			
 		}]
