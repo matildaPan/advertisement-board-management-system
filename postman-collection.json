@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "660227a0-7340-4996-a41d-e13fda65a21b",
+		"name": "advertisement-board-management-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"admin@email.com\",\"password\":\"admin@email.com\"}"
+				},
+				"url": {
+					"raw": "localhost:4800/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shoppingCentreList",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQyNjI1MCwiZXhwIjoxNTM5NTEyNjUwfQ.nDN0DotgvH_wIyPd68T8ZLxgETBR1Iz_-cxjFbhvP7s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/shoppingCentres",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"shoppingCentres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createShoppingCentre",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"test create shopping centre\",\n\t\"address\": \"somewhere in the air\"\n}"
+				},
+				"url": {
+					"raw": "localhost:4800/api/shoppingCentres",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"shoppingCentres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateShoppingCentre",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"wololo\",\n\t\"address\": \"hahahaha\"\n}"
+				},
+				"url": {
+					"raw": "localhost:4800/api/shoppingCentre/7d4700ef-774a-449a-b82c-8ba98bd855ba",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"shoppingCentre",
+						"7d4700ef-774a-449a-b82c-8ba98bd855ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getShoppingCentreById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/shoppingCentre/7d4700ef-774a-449a-b82c-8ba98bd855ba",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"shoppingCentre",
+						"7d4700ef-774a-449a-b82c-8ba98bd855ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteShoppingCentre",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/shoppingCentre/7d4700ef-774a-449a-b82c-8ba98bd855ba",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"shoppingCentre",
+						"7d4700ef-774a-449a-b82c-8ba98bd855ba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAssetList",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/assets",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAsset",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"asset 1\",\n\t\"width\": 3,\n\t\"height\": 2,\n\t\"location\": \"wherever\",\n\t\"active\": 1,\n\t\"shoppingCentreId\": \"ab01a823-5b7d-4dec-8ada-fe85087ec342\"\n\t\n}"
+				},
+				"url": {
+					"raw": "localhost:4800/api/assets",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateAsset",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"assettttt\"\n}"
+				},
+				"url": {
+					"raw": "localhost:4800/api/asset/3225dfbf-7a57-48ea-9e95-d881fecb4021",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"asset",
+						"3225dfbf-7a57-48ea-9e95-d881fecb4021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAssetById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/asset/7ad67d7d-eabc-4dd6-9292-d15395ae9084",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"asset",
+						"7ad67d7d-eabc-4dd6-9292-d15395ae9084"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAsset",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/asset/7ad67d7d-eabc-4dd6-9292-d15395ae9084",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"asset",
+						"7ad67d7d-eabc-4dd6-9292-d15395ae9084"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAssetListByShoppingCentreId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsInVzZXJJZCI6ImUwZjQxMTQ1LTU1N2ItNDY3MS1hYmU2LTM1MDAwNjRmOWRjNiIsImlhdCI6MTUzOTQ3OTY3OSwiZXhwIjoxNTM5NTY2MDc5fQ.hUSQ4AdyCBvO3YocRNRbPdPhy8wX1BbFJDjsqqRannk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4800/api/assets?shoppingCentrId=ab01a823-5b7d-4dec-8ada-fe85087ec342",
+					"host": [
+						"localhost"
+					],
+					"port": "4800",
+					"path": [
+						"api",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "shoppingCentrId",
+							"value": "ab01a823-5b7d-4dec-8ada-fe85087ec342"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
